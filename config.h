@@ -72,7 +72,7 @@ static const Layout layouts[] = {
 	/* symbol🨄🨁🨀🨂   arrange function */
 	{ "",      tile },    /* first entry is default */
 	{ "",      grid },
-	{ "▢",      monocle },
+	{ "",      monocle },
 	{ "",      NULL },    /* no layout function means floating behavior 🨃🨅*/
 	{ NULL,       NULL },
 };
@@ -159,6 +159,9 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
+ 	{ MODKEY,                       XK_minus, scratchpad_show, {0} },
+ 	{ MODKEY|ShiftMask,             XK_minus, scratchpad_hide, {0} },
+ 	{ MODKEY,                       XK_equal,scratchpad_remove,{0} },
 };
 
 /* IF YOU HAVE A AZERTY KEYBOARD USE THESE CODES
