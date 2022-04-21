@@ -31,7 +31,7 @@ run "volumeicon"
 # run picom &
 sxhkd -c ~/.config/arco-dwm/sxhkd/sxhkdrc &
 setxkbmap -option caps:escape
-#run "nitrogen --restore"
+run "nitrogen --restore"
 # run "conky -c $HOME/.config/arco-dwm/system-overview"
 #you can set wallpapers in themes as well
 feh --bg-fill /usr/share/backgrounds/arcolinux-using/arco-wallpaper.jpg &
@@ -43,7 +43,7 @@ feh --bg-fill /usr/share/backgrounds/arcolinux-using/arco-wallpaper.jpg &
 #run applications from startup
 
 #run "insync start"
-#run "spotify"
+run "alacritty"
 #run "ckb-next -b"
 #run "discord"
 #run "telegram-desktop"
