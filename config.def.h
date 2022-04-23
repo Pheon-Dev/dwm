@@ -148,7 +148,15 @@ static Key keys[] = {
 	{ Mod1Mask|ShiftMask,	          XK_Tab,	   shiftview,	   {.i = -1 } },
 	{ MODKEY,		        		        XK_Tab,    shiftview,	   {.i =  1 } },
 	{ MODKEY|ShiftMask,		          XK_Tab,	   shiftview,	   {.i = -1 } },
-
+  // Cursor to Keys
+  { MODKEY|ControlMask, XK_k, spawn, SHCMD("exec xdotool mousemove_relative -- 0 -15") },
+  { MODKEY|ControlMask, XK_j, spawn, SHCMD("exec xdotool mousemove_relative 0 15") },
+  { MODKEY|ControlMask, XK_l, spawn, SHCMD("exec xdotool mousemove_relative 15 0") },
+  { MODKEY|ControlMask, XK_h, spawn, SHCMD("exec xdotool mousemove_relative -- -15 0") },
+  { MODKEY|ShiftMask, XK_h, spawn, SHCMD("exec xdotool click 1") },
+  { MODKEY|ShiftMask, XK_l, spawn, SHCMD("exec xdotool click 3") },
+  // { MODKEY|ShiftMask, XK_k, spawn, SHCMD("exec xdotool click 4") },
+  // { MODKEY|ShiftMask, XK_j, spawn, SHCMD("exec xdotool click 5") },
 
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)

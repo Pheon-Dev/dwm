@@ -123,13 +123,13 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
 	/*{ MODKEY,                       XK_Return, zoom,           {0} },*/
 	/*{ MODKEY,                       XK_Tab,    view,           {0} },*/
-	{ MODKEY|ShiftMask,				XK_q,      killclient,     {0} },
-	{ MODKEY,						XK_q,      killclient,     {0} },
+	{ MODKEY|ShiftMask,				      XK_q,      killclient,     {0} },
+	{ MODKEY,						            XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY|ControlMask,			XK_comma,  cyclelayout,    {.i = -1 } },
+	{ MODKEY|ControlMask,			      XK_comma,  cyclelayout,    {.i = -1 } },
 	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
 	{ MODKEY,                       XK_space,  cyclelayout,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
@@ -144,11 +144,19 @@ static Key keys[] = {
 	{ Mod1Mask|ControlMask,         XK_Left,   shiftview,      {.i = -1 } },
 	{ Mod1Mask|ControlMask,         XK_Up,     shiftview,      {.i =  1 } },
 	{ Mod1Mask|ControlMask,         XK_Down,   shiftview,      {.i = -1 } },	
-	{ Mod1Mask,						XK_Tab,    shiftview,      {.i =  1 } },
-	{ Mod1Mask|ShiftMask,	        XK_Tab,	   shiftview,	   {.i = -1 } },
-	{ MODKEY,		        		XK_Tab,    shiftview,	   {.i =  1 } },
-	{ MODKEY|ShiftMask,		        XK_Tab,	   shiftview,	   {.i = -1 } },
-
+	{ Mod1Mask,						          XK_Tab,    shiftview,      {.i =  1 } },
+	{ Mod1Mask|ShiftMask,	          XK_Tab,	   shiftview,	   {.i = -1 } },
+	{ MODKEY,		        		        XK_Tab,    shiftview,	   {.i =  1 } },
+	{ MODKEY|ShiftMask,		          XK_Tab,	   shiftview,	   {.i = -1 } },
+  // Cursor to Keys
+  { MODKEY|ControlMask, XK_k, spawn, SHCMD("exec xdotool mousemove_relative -- 0 -15") },
+  { MODKEY|ControlMask, XK_j, spawn, SHCMD("exec xdotool mousemove_relative 0 15") },
+  { MODKEY|ControlMask, XK_l, spawn, SHCMD("exec xdotool mousemove_relative 15 0") },
+  { MODKEY|ControlMask, XK_h, spawn, SHCMD("exec xdotool mousemove_relative -- -15 0") },
+  { MODKEY|ShiftMask, XK_h, spawn, SHCMD("exec xdotool click 1") },
+  { MODKEY|ShiftMask, XK_l, spawn, SHCMD("exec xdotool click 3") },
+  // { MODKEY|ShiftMask, XK_k, spawn, SHCMD("exec xdotool click 4") },
+  // { MODKEY|ShiftMask, XK_j, spawn, SHCMD("exec xdotool click 5") },
 
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
