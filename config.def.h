@@ -104,7 +104,7 @@ static const char *chrome[]  = { "google-chrome-stable", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_k,      spawn,          {.v = kitty } },
+	{ MODKEY,                       XK_K,      spawn,          {.v = kitty } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_w,      spawn,          {.v = browser } },
 	{ MODKEY,                       XK_g,      spawn,          {.v = chrome } },

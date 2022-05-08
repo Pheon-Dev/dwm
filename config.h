@@ -95,6 +95,7 @@ static const char *filecmd[]  = { "thunar", NULL };
 static const char *calendar[]  = { "gsimplecal", NULL };
 static const char *taskmanager[]  = { "xfce4-taskmanager", NULL };
 static const char *browser[]  = { "brave", NULL };
+static const char *kitty[]  = { "kitty", NULL };
 static const char *chrome[]  = { "google-chrome-stable", NULL };
 
 #include "selfrestart.c"
@@ -103,6 +104,7 @@ static const char *chrome[]  = { "google-chrome-stable", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+	{ MODKEY,                       XK_K,      spawn,          {.v = kitty } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_w,      spawn,          {.v = browser } },
 	{ MODKEY,                       XK_g,      spawn,          {.v = chrome } },
