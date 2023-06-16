@@ -106,7 +106,8 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,				      XK_f,      togglebarfloat, {0} },
   { MODKEY,                       XK_minus, scratchpad_show, {0} },
 	{ MODKEY|ShiftMask,             XK_minus, scratchpad_hide, {0} },
-	{ MODKEY,                       XK_equal,scratchpad_remove,{0} },
+	{ MODKEY|ShiftMask,             XK_equal,scratchpad_remove,{0} },
+	{ MODKEY,                       XK_equal,  togglefloating, {0} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
