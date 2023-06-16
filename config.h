@@ -1,5 +1,5 @@
-/* See LICENSE file for copyright and license details. */
 /* appearance */
+/* See LICENSE file for copyright and license details. */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 0;        /* 0 means no bar */
@@ -9,8 +9,8 @@ static const int showlayout         = 1;        /* 0 means no layout indicator *
 static const int showstatus         = 0;        /* 0 means no status bar */
 static const int showfloating       = 1;        /* 0 means no floating indicator */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "ComicMonoNF:size=10" };
-static const char dmenufont[]       = "ComicMonoNF:size=10";
+static const char *fonts[]          = { "Iosevka Nerd Font:size=10" };
+static const char dmenufont[]       = "Iodevka Nerd Font:size=10";
 static const char col_gray1[]       = "#21222c";
 static const char col_gray2[]       = "#282a36";
 static const char col_gray3[]       = "#44475a";
@@ -104,6 +104,9 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_t,      togglebartags,  {0} },
 	{ MODKEY|ShiftMask,				      XK_s,      togglebarlt,    {0} },
 	{ MODKEY|ShiftMask,				      XK_f,      togglebarfloat, {0} },
+  { MODKEY,                       XK_minus, scratchpad_show, {0} },
+	{ MODKEY|ShiftMask,             XK_minus, scratchpad_hide, {0} },
+	{ MODKEY,                       XK_equal,scratchpad_remove,{0} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
