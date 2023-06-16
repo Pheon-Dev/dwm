@@ -9,8 +9,8 @@ static const int showlayout         = 1;        /* 0 means no layout indicator *
 static const int showstatus         = 0;        /* 0 means no status bar */
 static const int showfloating       = 1;        /* 0 means no floating indicator */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Iosevka Nerd Font:size=10" };
-static const char dmenufont[]       = "Iodevka Nerd Font:size=10";
+static const char *fonts[]          = { "ComicMonoNF:size=10" };
+static const char dmenufont[]       = "ComicMononNF:size=10";
 static const char col_gray1[]       = "#21222c";
 static const char col_gray2[]       = "#282a36";
 static const char col_gray3[]       = "#44475a";
