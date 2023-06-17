@@ -1,6 +1,7 @@
 /* appearance */
 /* See LICENSE file for copyright and license details. */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int gappx     = 1;        /* gap pixel between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 0;        /* 0 means no bar */
 static const int showtitle          = 0;        /* 0 means no title */
@@ -25,6 +26,9 @@ static const char *colors[][3]      = {
 };
 
 static const char *const autostart[] = {
+	"setxkbmap", "-options", "'caps:escape'", NULL,
+	"picom", NULL,
+	"dunst", NULL,
 	"alacritty", NULL,
 	"firefox", NULL,
 	NULL /* terminate */
