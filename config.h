@@ -28,8 +28,7 @@ static const char *colors[][3]      = {
 
 static const char *const autostart[] = {
 	"setxkbmap", "-options", "'caps:escape'", NULL,
-	// "picom", NULL,
-	"dunst", NULL,
+	"picom", NULL,
 	"alacritty", NULL,
 	"firefox", NULL,
 	NULL /* terminate */
