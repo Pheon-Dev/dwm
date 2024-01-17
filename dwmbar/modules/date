@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Prints out the date
+
+PREFIX=''
+
+get_date()
+{
+    echo "$PREFIX $(date '+%A, %d %B %Y')"
+}
+
+get_date

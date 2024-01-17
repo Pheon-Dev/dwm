@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Prints out your public IP address
+# Depends on curl
+
+PREFIX=' '
+
+get_pub_ip()
+{
+    echo "$PREFIX$(curl -s ifconfig.co)"
+}
+
+get_pub_ip

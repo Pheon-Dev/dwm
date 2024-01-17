@@ -1,0 +1,77 @@
+#!/bin/bash
+
+# Prints out battery percentage
+DISCHARGING_ICON='󱐌 '
+CHARGING_ICON='󱐋 '
+WARNING_ICON=' '
+UNKNOWN_ICON=' '
+BATTERY_FULL_ICON=' '
+
+BATTERY_0_ICON='󰂎'
+BATTERY_1_ICON='󰁺'
+BATTERY_2_ICON='󰁻'
+BATTERY_3_ICON='󰁼'
+BATTERY_4_ICON='󰁽'
+BATTERY_5_ICON='󰁾'
+BATTERY_6_ICON='󰁿'
+BATTERY_7_ICON='󰂀'
+BATTERY_8_ICON='󰂁'
+BATTERY_9_ICON='󰂂'
+BATTERY_10_ICON='󰁹'
+
+FULL_AT=98
+
+BAT_ICON=""
+ICON=""
+
+get_battery()
+{
+	# The vast majority of people only use one battery.
+
+	if [ -d /sys/class/power_supply/BAT0 ]; then
+		capacity=$(cat /sys/class/power_supply/BAT0/capacity)
+		charging=$(cat /sys/class/power_supply/BAT0/status)
+    if [[ "$charging" == "Charging" ]]; then
+        ICON="$CHARGING_ICON"
+    fi
+    if [[ "$charging" == "Full" ]]; then
+        ICON="$BATTERY_FULL_ICON"
+    fi
+    if [[ "$charging" == "Not charging" ]]; then
+        ICON="$UNKNOWN_ICON"
+    fi
+    if [[ "$charging" == "Discharging" ]]; then
+        ICON="$DISCHARGING_ICON"
+    fi
+		if [[ $capacity -le 30 ]]; then
+			ICON="$WARNING_ICON"
+		fi
+
+		if [[ $capacity -ge $FULL_AT ]]; then
+			BAT_ICON=$BATTERY_FULL_ICON
+		elif [[ $capacity -le 10 ]]; then
+			BAT_ICON=$BATTERY_1_ICON
+		elif [[ $capacity -le 20 ]]; then
+			BAT_ICON=$BATTERY_2_ICON
+		elif [[ $capacity -le 30 ]]; then
+			BAT_ICON=$BATTERY_3_ICON
+		elif [[ $capacity -le 40 ]]; then
+			BAT_ICON=$BATTERY_4_ICON
+		elif [[ $capacity -le 50 ]]; then
+			BAT_ICON=$BATTERY_5_ICON
+		elif [[ $capacity -le 60 ]]; then
+			BAT_ICON=$BATTERY_6_ICON
+		elif [[ $capacity -le 70 ]]; then
+			BAT_ICON=$BATTERY_7_ICON
+		elif [[ $capacity -le 80 ]]; then
+			BAT_ICON=$BATTERY_8_ICON
+		elif [[ $capacity -le 90 ]]; then
+			BAT_ICON=$BATTERY_9_ICON
+		elif [[ $capacity -le $FULL_AT ]]; then
+			BAT_ICON=$BATTERY_2_ICON
+		fi
+	fi
+	echo "$ICON$BAT_ICON $capacity%"
+}
+
+get_battery
