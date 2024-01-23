@@ -1,13 +1,12 @@
 #!/bin/bash
-
 # Prints the backlight percentage
 # Requires the light package
 
-PREFIX='ﯧ'
+PREFIX=' '
 
 get_backlight()
 {
-    echo "$PREFIX $(light | sed 's/\..*//g')%"
+  echo $PREFIX $(brightnessctl --device=intel_backlight i | grep -E "Current" | awk 'BEGIN { FS = "(" } { print $2 }' | awk 'BEGIN { FS = ")" } { print $1 }')
 }
 
 get_backlight
