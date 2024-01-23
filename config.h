@@ -1,5 +1,5 @@
 /* See LICENSE file for copyright and license details. */
-
+#include <X11/XF86keysym.h>
 /* appearance */
 static const unsigned int borderpx = 1; /* border pixel of windows */
 static const unsigned int snap = 32;    /* snap pixel */
@@ -71,6 +71,12 @@ static const char *dmenucmd[] = {
     "-nf",       col_gray3, "-sb",    col_cyan, "-sf",     col_gray4, NULL};
 static const char *browsercmd[] = {"firefox", NULL};
 static const char *termcmd[] = {"alacritty", NULL};
+static const char *brupcmd[] = {"brightnessctl", "set", "10%+", NULL};
+static const char *brdowncmd[] = {"brightnessctl", "set", "10%-", NULL};
+static const char *mutecmd[] = {"pulsemixer", "--toggle-mute", NULL};
+static const char *volupcmd[] = {"pulsemixer", "--change-volume", "+10", NULL};
+static const char *voldowncmd[] = {"pulsemixer", "--change-volume", "-10",
+                                   NULL};
 
 static const Key keys[] = {
     /* modifier                     key        function        argument */
@@ -107,6 +113,11 @@ static const Key keys[] = {
     {MODKEY, XK_minus, scratchpad_show, {0}},
     {MODKEY | ShiftMask, XK_minus, scratchpad_hide, {0}},
     {MODKEY, XK_equal, scratchpad_remove, {0}},
+    {0, XF86XK_MonBrightnessUp, spawn, {.v = brupcmd}},
+    {0, XF86XK_MonBrightnessDown, spawn, {.v = brdowncmd}},
+    {0, XF86XK_AudioMute, spawn, {.v = mutecmd}},
+    {0, XF86XK_AudioLowerVolume, spawn, {.v = voldowncmd}},
+    {0, XF86XK_AudioRaiseVolume, spawn, {.v = volupcmd}},
 };
 
 /* button definitions */
