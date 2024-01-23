@@ -31,6 +31,10 @@ get_battery()
 	if [ -d /sys/class/power_supply/BAT0 ]; then
 		capacity=$(cat /sys/class/power_supply/BAT0/capacity)
 		charging=$(cat /sys/class/power_supply/BAT0/status)
+		cycles=$(cat /sys/class/power_supply/BAT0/cycle_count)
+    energy_then=$(cat /sys/class/power_supply/BAT0/energy_full_design)
+    energy_now=$(cat /sys/class/power_supply/BAT0/energy_now)
+
     if [[ "$charging" == "Charging" ]]; then
         ICON="$CHARGING_ICON"
     fi
@@ -71,7 +75,7 @@ get_battery()
 			BAT_ICON=$BATTERY_2_ICON
 		fi
 	fi
-	echo "$ICON$BAT_ICON $capacity%"
+	echo "$ICON$BAT_ICON $capacity%  $cycles"
 }
 
 get_battery
