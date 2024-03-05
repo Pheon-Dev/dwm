@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # What modules, in what order
-MODULES="time date archupdates volume ram cpuload cputemp bluetooth backlight fanspeed ethernet wifi battery"
+MODULES="time date archupdates volume ram cpuload cputemp disksize bluetooth backlight fanspeed ethernet wifi battery"
 
 # Modules that require an active internet connection
 ONLINE_MODULES="weather internet"
