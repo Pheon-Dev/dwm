@@ -16,7 +16,7 @@ static const char col_cyan1[] = "#89b4fa";
 static const char *colors[][3] = {
     /*               fg         bg         border   */
     [SchemeNorm] = {col_gray3, col_gray1, col_gray2},
-    [SchemeSel] = {col_gray4, col_gray1, col_cyan1},
+    [SchemeSel] = {col_gray1, col_cyan1, col_cyan1},
 };
 
 /* tagging */
@@ -84,6 +84,7 @@ static const Key keys[] = {
     {MODKEY, XK_w, spawn, {.v = browsercmd}},
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
     {MODKEY, XK_b, togglebar, {0}},
+    {MODKEY | ShiftMask, XK_b, togglebar, {.i = 1}},
     {MODKEY, XK_j, focusstack, {.i = +1}},
     {MODKEY, XK_k, focusstack, {.i = -1}},
     {MODKEY, XK_i, incnmaster, {.i = +1}},

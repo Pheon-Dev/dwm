@@ -149,6 +149,7 @@ struct Monitor {
   unsigned int sellt;
   unsigned int tagset[2];
   int showbar;
+  unsigned int barmask;
   int topbar;
   Client *clients;
   Client *sel;
@@ -663,6 +664,7 @@ Monitor *createmon(void) {
   m->mfact = mfact;
   m->nmaster = nmaster;
   m->showbar = showbar;
+  m->barmask = showbar * TAGMASK;
   m->topbar = topbar;
   m->lt[0] = &layouts[0];
   m->lt[1] = &layouts[1 % LENGTH(layouts)];
@@ -723,7 +725,7 @@ void drawbar(Monitor *m) {
   unsigned int i, occ = 0, urg = 0;
   Client *c;
 
-  if (!m->showbar)
+  if (!(m->tagset[m->seltags] & m->barmask))
     return;
 
   /* draw status first so it can be overdrawn by tags later */
@@ -1775,7 +1777,14 @@ void tile(Monitor *m) {
 }
 
 void togglebar(const Arg *arg) {
-  selmon->showbar = !selmon->showbar;
+  unsigned int ctag = selmon->tagset[selmon->seltags];
+
+  if (arg->i == 1 || ctag == TAGMASK) {
+    selmon->showbar = !selmon->showbar;
+    selmon->barmask = selmon->showbar * TAGMASK;
+  } else {
+    selmon->barmask ^= ctag;
+  }
   updatebarpos(selmon);
   XMoveResizeWindow(dpy, selmon->barwin, selmon->wx, selmon->by, selmon->ww,
                     bh);
@@ -1897,7 +1906,7 @@ void updatebars(void) {
 void updatebarpos(Monitor *m) {
   m->wy = m->my;
   m->wh = m->mh;
-  if (m->showbar) {
+  if ((m->tagset[m->seltags] & m->barmask)) {
     m->wh -= bh;
     m->by = m->topbar ? m->wy : m->wy + m->wh;
     m->wy = m->topbar ? m->wy + bh : m->wy;
@@ -2095,6 +2104,9 @@ void view(const Arg *arg) {
   selmon->seltags ^= 1; /* toggle sel tagset */
   if (arg->ui & TAGMASK)
     selmon->tagset[selmon->seltags] = arg->ui & TAGMASK;
+  updatebarpos(selmon);
+  XMoveResizeWindow(dpy, selmon->barwin, selmon->wx, selmon->by, selmon->ww,
+                    bh);
   focus(NULL);
   arrange(selmon);
 }
