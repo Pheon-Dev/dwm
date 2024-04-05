@@ -15,8 +15,8 @@ static const char col_cyan[] = "#cdd6f4";
 static const char col_cyan1[] = "#89b4fa";
 static const char *colors[][3] = {
     /*               fg         bg         border   */
-    [SchemeNorm] = {col_gray3, col_cyan, col_gray2},
-    [SchemeSel] = {col_gray1, col_gray2, col_cyan1},
+    [SchemeNorm] = {col_gray3, col_gray1, col_gray2},
+    [SchemeSel] = {col_cyan, col_gray2, col_cyan1},
 };
 
 /* tagging */
@@ -96,7 +96,7 @@ static const Key keys[] = {
     {MODKEY | ShiftMask, XK_j, movestack, {.i = +1}},
     {MODKEY | ShiftMask, XK_k, movestack, {.i = -1}},
     {MODKEY, XK_Tab, view, {0}},
-    {MODKEY | ShiftMask, XK_c, killclient, {0}},
+    {MODKEY, XK_q, killclient, {0}},
     {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
     {MODKEY, XK_x, setlayout, {.v = &layouts[1]}},
     {MODKEY, XK_m, setlayout, {.v = &layouts[2]}},
