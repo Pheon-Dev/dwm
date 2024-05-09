@@ -8,10 +8,11 @@ BLUETOOTH_OFF_ICON=''
 get_bluetooth()
 {
     status=$(systemctl is-active bluetooth.service)
+    perc=$(bluetoothctl info | grep "Battery Percentage" | awk -F '(' '{print $2}' | awk -F ')' '{print $1}')
 
     if [ "$status" == "active" ]
     then
-        echo "$BLUETOOTH_ON_ICON"
+        echo "$BLUETOOTH_ON_ICON $perc%"
     else
         :
         #echo "$BLUETOOTH_OFF_ICON"
