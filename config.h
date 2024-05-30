@@ -16,7 +16,7 @@ static const char col_cyan1[] = "#89b4fa";
 static const char *colors[][3] = {
     /*               fg         bg         border   */
     [SchemeNorm] = {col_gray3, col_gray1, col_gray2},
-    [SchemeSel] = {col_gray1, col_cyan1, col_cyan1},
+    [SchemeSel] = {col_cyan1, col_gray1, col_cyan1},
 };
 
 /* tagging */
@@ -70,6 +70,7 @@ static const char *dmenucmd[] = {
     "dmenu_run", "-m",      dmenumon, "-fn",    dmenufont, "-nb",     col_gray1,
     "-nf",       col_gray3, "-sb",    col_cyan, "-sf",     col_gray4, NULL};
 static const char *browsercmd[] = {"firefox", NULL};
+static const char *termalac[] = {"alacritty", NULL};
 static const char *termcmd[] = {"st", NULL};
 static const char *brupcmd[] = {"brightnessctl", "set", "10%+", NULL};
 static const char *brdowncmd[] = {"brightnessctl", "set", "10%-", NULL};
@@ -83,6 +84,7 @@ static const Key keys[] = {
     {MODKEY, XK_p, spawn, {.v = dmenucmd}},
     {MODKEY, XK_w, spawn, {.v = browsercmd}},
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
+    {MODKEY, XK_a, spawn, {.v = termalac}},
     {MODKEY, XK_b, togglebar, {0}},
     {MODKEY | ShiftMask, XK_b, togglebar, {.i = 1}},
     {MODKEY, XK_j, focusstack, {.i = +1}},
