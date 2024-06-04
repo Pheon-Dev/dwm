@@ -5,7 +5,10 @@
 CONNECTION=""
 get_wifi() {
   connection=$(nmcli dev wifi list | awk 'BEGIN { FS = "\n" } NR==1 {next;} { print $1}' | awk 'BEGIN { FS = " " } { print ($1 =="*")? "current " " " $3 " " $8 "% " $9 : "other" }' | grep -E "current" | awk 'BEGIN { FS = " " } { print $2 " " $3 " " $4 " " $5 }')
-  CONNECTION="$connection"
+
+  name=$(nmcli dev wifi list | grep "*" | awk 'BEGIN { FS = " " } { print "  " $3 " " $6 " " $7 " " $8 "% " $9 }')
+
+  CONNECTION="$name"
   if [[ $CONNECTION == "" ]]; then
     echo ""
   else
