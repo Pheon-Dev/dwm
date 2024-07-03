@@ -72,6 +72,7 @@ static const char *dmenucmd[] = {
 static const char *browsercmd[] = {"firefox", NULL};
 static const char *termalac[] = {"alacritty", NULL};
 static const char *termcmd[] = {"st", NULL};
+static const char *wezterm[] = {"wezterm", NULL};
 static const char *brupcmd[] = {"brightnessctl", "set", "10%+", NULL};
 static const char *brdowncmd[] = {"brightnessctl", "set", "10%-", NULL};
 static const char *mutecmd[] = {"pulsemixer", "--toggle-mute", NULL};
@@ -82,8 +83,9 @@ static const char *voldowncmd[] = {"pulsemixer", "--change-volume", "-10",
 static const Key keys[] = {
     /* modifier                     key        function        argument */
     {MODKEY, XK_p, spawn, {.v = dmenucmd}},
-    {MODKEY, XK_w, spawn, {.v = browsercmd}},
+    {MODKEY | ShiftMask, XK_w, spawn, {.v = browsercmd}},
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
+    {MODKEY, XK_w, spawn, {.v = wezterm}},
     {MODKEY, XK_a, spawn, {.v = termalac}},
     {MODKEY, XK_b, togglebar, {0}},
     {MODKEY | ShiftMask, XK_b, togglebar, {.i = 1}},
@@ -113,14 +115,18 @@ static const Key keys[] = {
     TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3)
         TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5) TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7)
             TAGKEYS(XK_9, 8){MODKEY | ShiftMask, XK_q, quit, {0}},
-    {MODKEY, XK_minus, scratchpad_show, {0}},
-    {MODKEY | ShiftMask, XK_minus, scratchpad_hide, {0}},
-    {MODKEY, XK_equal, scratchpad_remove, {0}},
     {0, XF86XK_MonBrightnessUp, spawn, {.v = brupcmd}},
     {0, XF86XK_MonBrightnessDown, spawn, {.v = brdowncmd}},
     {0, XF86XK_AudioMute, spawn, {.v = mutecmd}},
     {0, XF86XK_AudioLowerVolume, spawn, {.v = voldowncmd}},
     {0, XF86XK_AudioRaiseVolume, spawn, {.v = volupcmd}},
+    {MODKEY, XK_t, scratchpad_show, {.i = 1}},
+    {MODKEY, XK_y, scratchpad_show, {.i = 2}},
+    {MODKEY, XK_u, scratchpad_show, {.i = 3}},
+    {MODKEY | ShiftMask, XK_t, scratchpad_hide, {.i = 1}},
+    {MODKEY | ShiftMask, XK_y, scratchpad_hide, {.i = 2}},
+    {MODKEY | ShiftMask, XK_u, scratchpad_hide, {.i = 3}},
+    {MODKEY | ShiftMask, XK_r, scratchpad_remove, {0}},
 };
 
 /* button definitions */
