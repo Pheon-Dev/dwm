@@ -6,7 +6,7 @@ PREFIX=' '
 
 get_disk()
 {
-    echo $PREFIX $(df -h --total | head -4 | tail -1 | awk 'BEGIN { FS = " " } { print $3 "/" $2 " " $5 }')
+    echo $PREFIX $(df -h --total | head -5 | tail -1 | awk 'BEGIN { FS = " " } { print $3 "/" $2 " " $5 }')
 }
 
 get_disk
