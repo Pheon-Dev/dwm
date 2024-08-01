@@ -4,7 +4,7 @@
 
 CONNECTION=""
 get_wifi() {
-  connection=$(nmcli dev wifi list | awk 'BEGIN { FS = "\n" } NR==1 {next;} { print $1}' | awk 'BEGIN { FS = " " } { print ($1 =="*")? "current " "  " $3 " " $8 "% " : "other" }' | grep -E "current" | awk 'BEGIN { FS = " " } { print $2 " " $3 " " $4 " " $5 }')
+  connection=$(nmcli dev wifi list | awk 'BEGIN { FS = "\n" } NR==1 {next;} { print $1}' | awk 'BEGIN { FS = " " } { print ($1 =="*")? "current " "  " $3 " " $8 "% " : "other" }' | grep -E "current" | awk 'BEGIN { FS = " " } { print $2 " " $3 " " $4 " " $5  " " $6 " " $7 " " $8 }')
   CONNECTION="$connection"
   if [[ $CONNECTION == "" ]]; then
     echo ""

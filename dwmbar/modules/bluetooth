@@ -13,7 +13,12 @@ get_bluetooth()
 
     if [ "$status" == "active" ]
     then
-        echo "$BLUETOOTH_ON_ICON $name $perc"
+        if [ "$perc" == "" ]
+        then
+          echo "$BLUETOOTH_ON_ICON"
+        else
+          echo "$BLUETOOTH_ON_ICON $name $perc"
+        fi
     else
         echo "$BLUETOOTH_OFF_ICON"
     fi
