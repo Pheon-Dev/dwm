@@ -120,6 +120,9 @@ static const Key keys[] = {
     {0, XF86XK_AudioMute, spawn, {.v = mutecmd}},
     {0, XF86XK_AudioLowerVolume, spawn, {.v = voldowncmd}},
     {0, XF86XK_AudioRaiseVolume, spawn, {.v = volupcmd}},
+    {MODKEY, XK_minus, scratchpad_show, {0}},
+    {MODKEY | ShiftMask, XK_minus, scratchpad_hide, {0}},
+    {MODKEY, XK_equal, scratchpad_remove, {0}},
 };
 
 /* button definitions */
