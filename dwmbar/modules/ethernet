@@ -6,9 +6,10 @@ ETHERNET_ICON=''
 
 get_ethernet()
 {
-    if [ -d /sys/class/net/eth? ]; then
-        if [ "$(cat /sys/class/net/eth?/carrier)" == "1" ]; then
-            echo "$ETHERNET_ICON"
+    if [ -d /sys/class/net/enp0s31f6 ]; then
+        if [ "$(cat /sys/class/net/enp0s31f6/carrier)" == "1" ]; then
+          ip=$(curl -s ifconfig.co)
+            echo "$ETHERNET_ICON $ip"
         fi
     fi
 }
